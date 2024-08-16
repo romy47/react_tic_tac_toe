@@ -7,8 +7,8 @@ function App() {
     <div className='App'>
       <div id='game-board' class='bg-secondary border-1 rounded mt-5'>
         <ul id='game-players' class='list-unstyled d-flex justify-content-around text-white fs-4 py-4'>
-          <Player name='Player 1' symbol='X' />
-          <Player name='Player 2' symbol='O' />
+          <Player initialName='Player 1' symbol='X' />
+          <Player initialName='Player 2' symbol='O' />
         </ul>
       </div>
     </div>

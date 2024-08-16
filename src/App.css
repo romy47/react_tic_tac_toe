@@ -3,3 +3,12 @@
   min-height: 700px;
   margin: 0 auto;
 }
+
+.player-name {
+  width: 200px;
+  height: 35px;
+}
+
+.edit-player-name-btn {
+  min-width: 50px;
+}
