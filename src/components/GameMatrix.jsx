@@ -1,16 +1,6 @@
 import { useState } from "react";
-const initialMatrix = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
-]
-export default function GameMatrix({ playerTurns, handlePlayerTurn }) {
-    let gameMatrix = initialMatrix;
-    for (let turn of playerTurns) {
-        const { cell, player } = turn;
-        const { rowIndex, colIndex } = cell;
-        gameMatrix[rowIndex][colIndex] = player;
-    }
+
+export default function GameMatrix({ gameMatrix, handlePlayerTurn }) {
     return (
         <div className='m-3 d-flex flex-column justify-content-between  flex-grow-1'>
             {gameMatrix.map(

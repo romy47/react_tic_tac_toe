@@ -4,6 +4,12 @@ import Player from './components/Player';
 import GameMatrix from './components/GameMatrix';
 import { useState } from "react";
 
+const initialMatrix = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null]
+]
+
 function getCurrentPlayer(turns = []) {
   return turns.length > 0 && turns[turns.length - 1].player === 'X' ? 'O' : 'X'
 }
@@ -11,6 +17,13 @@ function getCurrentPlayer(turns = []) {
 function App() {
   const [playerTurns, setPlayerTurns] = useState([]);
   let activePlayer = getCurrentPlayer(playerTurns);
+  let gameMatrix = initialMatrix;
+
+  for (let turn of playerTurns) {
+    const { cell, player } = turn;
+    const { rowIndex, colIndex } = cell;
+    gameMatrix[rowIndex][colIndex] = player;
+  }
 
   function handlePlayerTurn(rowIndex, colIndex) {
     setPlayerTurns((prevTurns) => {
@@ -28,8 +41,7 @@ function App() {
           <Player isActive={activePlayer === 'X'} initialName='Player 1' symbol='X' />
           <Player isActive={activePlayer === 'O'} activePlayer={activePlayer} initialName='Player 2' symbol='O' />
         </ul>
-
-        <GameMatrix handlePlayerTurn={handlePlayerTurn} playerTurns={playerTurns} />
+        <GameMatrix handlePlayerTurn={handlePlayerTurn} gameMatrix={gameMatrix} />
       </div>
     </div>
   );
