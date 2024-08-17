@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function Player({ initialName, symbol }) {
+export default function Player({ initialName, symbol, isActive }) {
     const [isEditingPlayerName, setIsEditingPlayerName] = useState(false);
     const [playerName, setPlayerName] = useState(initialName);
 
@@ -15,8 +15,14 @@ export default function Player({ initialName, symbol }) {
     if (isEditingPlayerName) {
         playerNameElement = <input type='text' className='me-4 player-name' value={playerName} onChange={handleChangePlayerName}></input>
     }
+
+    let playerClass = 'd-flex align-items-center pb-2';
+    if (isActive) {
+        playerClass += '  border-light border-bottom';
+    }
+
     return (
-        <li className='d-flex align-items-center'>
+        <li className={playerClass}>
             {playerNameElement}
             <span className='me-4'>{symbol}</span>
             <button onClick={handleEditPlayerBtnClick} className='edit-player-name-btn btn btn-outline-light btn-sm'>{isEditingPlayerName ? 'Save' : 'Edit'}</button>
