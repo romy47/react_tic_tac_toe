@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Player from './components/Player';
 import GameMatrix from './components/GameMatrix';
+import { WINNING_CONDITIONS } from './utilities/winning-conditions';
 import { useState } from "react";
 
 const initialMatrix = [
@@ -14,6 +15,21 @@ function getCurrentPlayer(turns = []) {
   return turns.length > 0 && turns[turns.length - 1].player === 'X' ? 'O' : 'X'
 }
 
+function findWinner(matrix) {
+  let winner = null;
+  for (const condition of WINNING_CONDITIONS) {
+    const firstCell = matrix[condition[0].rowIndex][condition[0].colIndex];
+    const secondCell = matrix[condition[1].rowIndex][condition[1].colIndex];
+    const thirdCell = matrix[condition[2].rowIndex][condition[2].colIndex];
+
+    if (firstCell && firstCell === secondCell && firstCell === thirdCell) {
+      winner = firstCell;
+      break;
+    }
+  }
+  return winner;
+}
+
 function App() {
   const [playerTurns, setPlayerTurns] = useState([]);
   let activePlayer = getCurrentPlayer(playerTurns);
@@ -24,6 +40,8 @@ function App() {
     const { rowIndex, colIndex } = cell;
     gameMatrix[rowIndex][colIndex] = player;
   }
+
+  const winner = findWinner(gameMatrix);
 
   function handlePlayerTurn(rowIndex, colIndex) {
     setPlayerTurns((prevTurns) => {
@@ -41,7 +59,12 @@ function App() {
           <Player isActive={activePlayer === 'X'} initialName='Player 1' symbol='X' />
           <Player isActive={activePlayer === 'O'} activePlayer={activePlayer} initialName='Player 2' symbol='O' />
         </ul>
-        <GameMatrix handlePlayerTurn={handlePlayerTurn} gameMatrix={gameMatrix} />
+        {winner &&
+          <p className='text-center text-white fs-4'>
+            Congratulations! You Won {winner}
+          </p>
+        }
+        <GameMatrix handlePlayerTurn={handlePlayerTurn} winner={winner} gameMatrix={gameMatrix} />
       </div>
     </div>
   );
