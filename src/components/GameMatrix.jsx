@@ -20,8 +20,8 @@ export default function GameMatrix({ activePlayer, handlePlayerTurn }) {
             {matrix.map(
                 (row, rowIndex) => <ul key={rowIndex} className='d-flex justify-content-between flex-grow-1 p-0 m-0'>
                     {
-                        row.map((cell, colIndex) => <button key={`${rowIndex}-${colIndex}`} className='w-100 m-1' onClick={() => handleCellClick(rowIndex, colIndex)}>
-                            &nbsp;{matrix[rowIndex][colIndex]}
+                        row.map((cell, colIndex) => <button key={`${rowIndex}-${colIndex}`} className='w-100 m-1 text-secondary fw-bold display-1' onClick={() => handleCellClick(rowIndex, colIndex)}>
+                            &#8288;{matrix[rowIndex][colIndex]}
                         </button>)
                     }
                 </ul>
