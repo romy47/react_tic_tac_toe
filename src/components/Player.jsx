@@ -11,15 +11,15 @@ export default function Player({ initialName, symbol }) {
         setPlayerName(event.target.value);
     }
 
-    let playerNameElement = <span class='me-4 player-name'>{playerName}</span>
+    let playerNameElement = <span className='me-4 player-name'>{playerName}</span>
     if (isEditingPlayerName) {
-        playerNameElement = <input type='text' class='me-4 player-name' value={playerName} onChange={handleChangePlayerName}></input>
+        playerNameElement = <input type='text' className='me-4 player-name' value={playerName} onChange={handleChangePlayerName}></input>
     }
     return (
-        <li class='d-flex align-items-center'>
+        <li className='d-flex align-items-center'>
             {playerNameElement}
-            <span class='me-4'>{symbol}</span>
-            <button onClick={handleEditPlayerBtnClick} class='edit-player-name-btn btn btn-outline-light btn-sm'>{isEditingPlayerName ? 'Save' : 'Edit'}</button>
+            <span className='me-4'>{symbol}</span>
+            <button onClick={handleEditPlayerBtnClick} className='edit-player-name-btn btn btn-outline-light btn-sm'>{isEditingPlayerName ? 'Save' : 'Edit'}</button>
         </li>
     );
 }
