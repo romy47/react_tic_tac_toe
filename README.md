@@ -21,4 +21,4 @@ This is a simple Tic-Tac-Toe game built with React and styled using Bootstrap. I
 
 ### Technologies Used
 
-React and Bootstrap best practices.
+React and Bootstrap.
