@@ -2,6 +2,8 @@
 
 This is a simple Tic-Tac-Toe game built with React and styled using Bootstrap. It was developed as part of a course I am taking on React and Next.js in Udemy, with additional tweaks and customizations. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![Game Screenshot](./game_screenshots/react-tic-tac-toe-1.png)
+
 ## Features
 
 * Two-Player Mode: Play against another person by taking turns.
