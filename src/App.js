@@ -34,7 +34,7 @@ function findWinner(matrix) {
 function App() {
   const [playerTurns, setPlayerTurns] = useState([]);
   let activePlayer = getCurrentPlayer(playerTurns);
-  let gameMatrix = initialMatrix;
+  let gameMatrix = [...initialMatrix.map(row => [...row])];
 
   for (let turn of playerTurns) {
     const { cell, player } = turn;
@@ -43,7 +43,7 @@ function App() {
   }
 
   const winner = findWinner(gameMatrix);
-
+  const isDraw = playerTurns.length === 9 && !winner
   function handlePlayerTurn(rowIndex, colIndex) {
     setPlayerTurns((prevTurns) => {
       let currentPlayer = getCurrentPlayer(prevTurns)
@@ -53,6 +53,10 @@ function App() {
     });
   }
 
+  function retry() {
+    setPlayerTurns([]);
+  }
+
   return (
     <div className='App'>
       <div id='game-board' className='bg-secondary border-1 rounded mt-5 d-flex flex-column'>
@@ -60,8 +64,8 @@ function App() {
           <Player isActive={activePlayer === 'X'} initialName='Player 1' symbol='X' />
           <Player isActive={activePlayer === 'O'} activePlayer={activePlayer} initialName='Player 2' symbol='O' />
         </ul>
-        {winner &&
-          <GameOver winner={winner} />
+        {(winner || isDraw) &&
+          < GameOver winner={winner} retry={retry} />
         }
         <GameMatrix handlePlayerTurn={handlePlayerTurn} winner={winner} gameMatrix={gameMatrix} />
       </div>
