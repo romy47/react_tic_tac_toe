@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Player from './components/Player';
 import GameMatrix from './components/GameMatrix';
+import GameOver from './components/GameOver';
 import { WINNING_CONDITIONS } from './utilities/winning-conditions';
 import { useState } from "react";
 
@@ -60,9 +61,7 @@ function App() {
           <Player isActive={activePlayer === 'O'} activePlayer={activePlayer} initialName='Player 2' symbol='O' />
         </ul>
         {winner &&
-          <p className='text-center text-white fs-4'>
-            Congratulations! You Won {winner}
-          </p>
+          <GameOver winner={winner} />
         }
         <GameMatrix handlePlayerTurn={handlePlayerTurn} winner={winner} gameMatrix={gameMatrix} />
       </div>

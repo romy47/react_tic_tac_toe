@@ -13,6 +13,5 @@ export default function GameMatrix({ gameMatrix, handlePlayerTurn, winner }) {
                 </ul>
             )}
         </div>
-
     )
 }
