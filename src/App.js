@@ -60,7 +60,7 @@ function App() {
   return (
     <div className='App'>
       <div id='game-board' className='bg-secondary border-1 rounded mt-5 d-flex flex-column'>
-        <ul id='game-players' className='list-unstyled d-flex justify-content-around text-white fs-4 py-4'>
+        <ul id='game-players' className='list-unstyled d-flex justify-content-around text-white fs-4 py-4 flex-wrap'>
           <Player isActive={activePlayer === 'X'} initialName='Player 1' symbol='X' />
           <Player isActive={activePlayer === 'O'} activePlayer={activePlayer} initialName='Player 2' symbol='O' />
         </ul>

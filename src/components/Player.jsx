@@ -16,9 +16,9 @@ export default function Player({ initialName, symbol, isActive }) {
         playerNameElement = <input type='text' className='me-4 player-name' value={playerName} onChange={handleChangePlayerName}></input>
     }
 
-    let playerClass = 'd-flex align-items-center pb-2';
+    let playerClass = 'd-flex align-items-center p-2 mb-3';
     if (isActive) {
-        playerClass += '  border-light border-bottom';
+        playerClass += '  border-light border rounded border-light';
     }
 
     return (
